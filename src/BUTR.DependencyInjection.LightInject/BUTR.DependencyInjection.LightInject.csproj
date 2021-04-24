@@ -1,0 +1,37 @@
+<!--EXTERNAL_PROPERTIES: DefineConstants;TargetFramework-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>BUTR.DependencyInjection.LightInject</PackageId>
+    <Title>BUTR.DependencyInjection.LightInject</Title>
+    <Description>Contains a Dependency Injection implementation that uses LightInject.</Description>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/BUTR/BUTR.DependencyInjection</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/BUTR/BUTR.DependencyInjection/master/assets/Icon128x128.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageFile Include="**/*.cs"
+                 PackagePath="content\$(TargetFramework)\%(RelativeDir)%(Filename)%(Extension).pp"
+                 Exclude="$(BaseIntermediateOutputPath)/**/*$(DefaultLanguageSourceExtension)" />
+    <PackageFile Include="**/*.cs"
+                 PackagePath="contentFiles\$(TargetFramework)\%(RelativeDir)%(Filename)%(Extension).pp"
+                 Exclude="$(BaseIntermediateOutputPath)/**/*$(DefaultLanguageSourceExtension)" />
+    <PackageFile Include="../../assets/Icon128x128.png" PackagePath="icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGetizer" Version="0.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LightInject.Source" Version="6.4.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BUTR.DependencyInjection\BUTR.DependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>

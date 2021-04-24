@@ -1,0 +1,43 @@
+<!--EXTERNAL_PROPERTIES: DefineConstants;TargetFramework-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>BUTR.DependencyInjection.ButterLib</PackageId>
+    <Title>BUTR.DependencyInjection.ButterLib</Title>
+    <Description>Contains a Dependency Injection implementation that uses Microsoft DI from ButterLib.</Description>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/BUTR/BUTR.DependencyInjection</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/BUTR/BUTR.DependencyInjection/master/assets/Icon128x128.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageFile Include="**/*.cs"
+                 PackagePath="content\$(TargetFramework)\%(RelativeDir)%(Filename)%(Extension).pp"
+                 Exclude="$(BaseIntermediateOutputPath)/**/*$(DefaultLanguageSourceExtension)" />
+    <PackageFile Include="**/*.cs"
+                 PackagePath="contentFiles\$(TargetFramework)\%(RelativeDir)%(Filename)%(Extension).pp"
+                 Exclude="$(BaseIntermediateOutputPath)/**/*$(DefaultLanguageSourceExtension)" />
+    <PackageFile Include="../../assets/Icon128x128.png" PackagePath="icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGetizer" Version="0.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bannerlord.ButterLib" Version="1.0.21" IncludeAssets="compile" />
+    <PackageReference Include="Bannerlord.ReferenceAssemblies.Core.EarlyAccess" Version="1.4.3.*" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" IncludeAssets="compile" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BUTR.DependencyInjection\BUTR.DependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>
