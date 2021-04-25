@@ -42,7 +42,7 @@
 #pragma warning disable
 #endif
 
-namespace BUTR.DependencyInjection
+namespace BUTR.DependencyInjection.Extensions
 {
     using global::System;
 
