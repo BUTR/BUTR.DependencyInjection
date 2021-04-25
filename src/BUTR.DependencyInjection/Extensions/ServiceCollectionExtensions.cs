@@ -56,7 +56,7 @@ namespace BUTR.DependencyInjection
         internal static WithHistoryGenericServiceContainer ServiceContainer;
 
 #if BUTRDEPENDENCYINJECTION_BANNERLORD
-        public static IGenericServiceContainer GetServiceContainer(this MBSubModuleBase _) => ServiceContainer;
+        public static IGenericServiceContainer GetServiceContainer(this TaleWorlds.MountAndBlade.MBSubModuleBase _) => ServiceContainer;
 #endif
 
         public static IGenericServiceContainer AddSingleton<TService, TImplementation>(this IGenericServiceContainer services)
