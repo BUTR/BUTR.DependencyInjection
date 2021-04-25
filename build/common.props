@@ -26,7 +26,6 @@
     <PackCompile>true</PackCompile>
     <PackEmbeddedResource>true</PackEmbeddedResource>
     <EnablePackCleanup>false</EnablePackCleanup>
-    <EnablePackInference>false</EnablePackInference>
 
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)' == ''">obj</BaseIntermediateOutputPath>
   </PropertyGroup>
