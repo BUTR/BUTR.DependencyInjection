@@ -44,7 +44,11 @@
 
 namespace BUTR.DependencyInjection.LightInject
 {
+#if BUTRDEPENDENCYINJECTION_INTERNAL
     using global::BUTR.DependencyInjection.LightInject.LightInject;
+#else
+    using global::$rootnamespace$.LightInject;
+#endif
 
     internal class LightInjectGenericServiceProvider : IGenericServiceProvider
     {
