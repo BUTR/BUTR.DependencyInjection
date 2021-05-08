@@ -62,7 +62,8 @@ namespace BUTR.DependencyInjection.Logger
                 //case LogLevel.Debug:
                 //case LogLevel.None:
                 default:
-                    Trace.WriteLine(string.Format(message, args));
+                    //Trace.WriteLine(string.Format(message, args));
+                    Trace.TraceInformation(message, args);
                     break;
                 case LogLevel.Information:
                     Trace.TraceInformation(message, args);
@@ -95,7 +96,8 @@ namespace BUTR.DependencyInjection.Logger
                 //case LogLevel.Debug:
                 //case LogLevel.None:
                 default:
-                    Trace.WriteLine(string.Format(message, args));
+                    //Trace.WriteLine(string.Format(message, args));
+                    Trace.TraceInformation(message, args);
                     break;
                 case LogLevel.Information:
                     Trace.TraceInformation(message, args);
