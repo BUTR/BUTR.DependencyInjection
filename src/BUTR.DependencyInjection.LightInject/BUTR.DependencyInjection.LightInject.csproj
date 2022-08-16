@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LightInject.Source" Version="6.4.1" PrivateAssets="all" />
+    <PackageReference Include="LightInject.Source" Version="6.5.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
