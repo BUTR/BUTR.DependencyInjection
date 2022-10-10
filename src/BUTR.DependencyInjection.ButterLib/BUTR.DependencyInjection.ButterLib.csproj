@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bannerlord.ButterLib" Version="1.0.30" IncludeAssets="compile" />
+    <PackageReference Include="Bannerlord.ButterLib" Version="2.2.4" IncludeAssets="compile" />
     <PackageReference Include="Bannerlord.ReferenceAssemblies.Core.EarlyAccess" Version="1.4.3.*" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" IncludeAssets="compile" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" IncludeAssets="compile" />
