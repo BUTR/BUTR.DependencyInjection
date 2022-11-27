@@ -44,13 +44,16 @@
 
 namespace BUTR.DependencyInjection
 {
+    using global::System;
+
 #if !BUTRDEPENDENCYINJECTION_PUBLIC
     internal
 #else
     public
 #endif
-        interface IGenericServiceProvider
+        interface IGenericServiceProvider : IDisposable
     {
+        IGenericServiceProviderScope CreateScope();
         TService? GetService<TService>() where TService : class;
     }
 }

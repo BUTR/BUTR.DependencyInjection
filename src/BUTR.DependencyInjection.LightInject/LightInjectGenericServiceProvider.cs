@@ -56,7 +56,12 @@ namespace BUTR.DependencyInjection.LightInject
 
         public LightInjectGenericServiceProvider(IServiceContainer serviceContainer) => _serviceContainer = serviceContainer;
 
+        /// <inheritdoc />
+        public IGenericServiceProviderScope CreateScope() => new LightInjectGenericServiceProviderScope(_serviceContainer.BeginScope());
+
         public TService? GetService<TService>() where TService : class => _serviceContainer.GetInstance<TService>();
+
+        public void Dispose() => _serviceContainer.Dispose();
     }
 }
 

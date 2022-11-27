@@ -7,7 +7,7 @@
 //   Consider migrating to PackageReferences instead:
 //   https://docs.microsoft.com/en-us/nuget/consume-packages/migrate-packages-config-to-package-reference
 //   Migrating brings the following benefits:
-//   * The "BUTR.DependencyInjection" folder and the "GenericServiceProvider.cs" file don't appear in your project.
+//   * The "BUTR.DependencyInjection" folder and the "IGenericServiceProviderScope.cs" file don't appear in your project.
 //   * The added file is immutable and can therefore not be modified by coincidence.
 //   * Updating/Uninstalling the package will work flawlessly.
 // </auto-generated>
@@ -44,23 +44,16 @@
 
 namespace BUTR.DependencyInjection
 {
+    using global::System;
+
 #if !BUTRDEPENDENCYINJECTION_PUBLIC
     internal
 #else
     public
 #endif
-        static class GenericServiceProvider
+    interface IGenericServiceProviderScope : IDisposable
     {
-        internal static IGenericServiceProvider? GlobalServiceProvider = default;
-        internal static IGenericServiceProviderScope? GameScopeServiceProvider = default;
-
-        public static TService? GetService<TService>() where TService : class
-        {
-            if (GameScopeServiceProvider is not null)
-                return GameScopeServiceProvider.GetService<TService>();
-
-            return GlobalServiceProvider?.GetService<TService>();
-        }
+        TService? GetService<TService>() where TService : class;
     }
 }
 

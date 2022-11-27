@@ -54,7 +54,12 @@ namespace BUTR.DependencyInjection.ButterLib
         private static IServiceProvider? ServiceProvider => DependencyInjectionExtensions.GetTempServiceProvider(((MBSubModuleBase) null)!) ??
                                                             DependencyInjectionExtensions.GetServiceProvider(((MBSubModuleBase) null)!);
 
+        /// <inheritdoc />
+        public IGenericServiceProviderScope CreateScope() => new ButterLibGenericServiceProviderScope(ServiceProvider.CreateScope());
+
         public TService? GetService<TService>() where TService : class => ServiceProvider?.GetRequiredService<TService>();
+
+        public void Dispose() { }
     }
 }
 
