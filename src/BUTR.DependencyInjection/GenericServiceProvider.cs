@@ -54,13 +54,11 @@ namespace BUTR.DependencyInjection
         internal static IGenericServiceProvider? GlobalServiceProvider = default;
         internal static IGenericServiceProviderScope? GameScopeServiceProvider = default;
 
-        public static TService? GetService<TService>() where TService : class
-        {
-            if (GameScopeServiceProvider is not null)
-                return GameScopeServiceProvider.GetService<TService>();
+        public static TService? GetService<TService>() where TService : class => GameScopeServiceProvider is not null
+            ? GameScopeServiceProvider.GetService<TService>()
+            : GlobalServiceProvider?.GetService<TService>();
 
-            return GlobalServiceProvider?.GetService<TService>();
-        }
+        public static IGenericServiceProviderScope? CreateScope() => GlobalServiceProvider?.CreateScope();
     }
 }
 
