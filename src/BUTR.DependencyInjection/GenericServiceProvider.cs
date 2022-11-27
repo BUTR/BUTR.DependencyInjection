@@ -51,7 +51,18 @@ namespace BUTR.DependencyInjection
 #endif
         static class GenericServiceProvider
     {
-        internal static IGenericServiceProvider? ServiceProvider { get; set; }
+        private static IGenericServiceProvider _globalServiceProvider = default!;
+        private static IGenericServiceProvider _gameScopeServiceProvider = default!;
+        internal static IGenericServiceProvider? ServiceProvider => _gameScopeServiceProvider ?? _globalServiceProvider;
+
+        internal static void SetGlobalServiceProvider(IGenericServiceProvider serviceProvider)
+        {
+            _globalServiceProvider = serviceProvider;
+        }
+        internal static void SetGameScopeServiceProvider(IGenericServiceProvider serviceProvider)
+        {
+            _gameScopeServiceProvider = serviceProvider;
+        }
 
         public static TService? GetService<TService>() where TService : class => ServiceProvider?.GetService<TService>();
     }
