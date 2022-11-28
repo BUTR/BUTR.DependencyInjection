@@ -50,8 +50,18 @@ namespace BUTR.DependencyInjection.LightInject
     using global::$rootnamespace$.LightInject;
 #endif
 
+    using global::System.Collections.Generic;
+    using global::System.Linq;
+
     internal class LightInjectGenericServiceProvider : IGenericServiceProvider
     {
+        private class ReferenceEqualityComparer : IEqualityComparer<object>
+        {
+            bool IEqualityComparer<object>.Equals(object x, object y) => ReferenceEquals(x, y);
+            int IEqualityComparer<object>.GetHashCode(object obj) => obj.GetHashCode();
+        }
+        private static readonly ReferenceEqualityComparer Comparer = new ReferenceEqualityComparer();
+
         private readonly IServiceContainer _serviceContainer;
 
         public LightInjectGenericServiceProvider(IServiceContainer serviceContainer) => _serviceContainer = serviceContainer;
@@ -59,7 +69,13 @@ namespace BUTR.DependencyInjection.LightInject
         /// <inheritdoc />
         public IGenericServiceProviderScope CreateScope() => new LightInjectGenericServiceProviderScope(_serviceContainer.BeginScope());
 
-        public TService? GetService<TService>() where TService : class => _serviceContainer.GetInstance<TService>();
+        public TService? GetService<TService>() where TService : class
+        {
+            var value = _serviceContainer.GetInstance<TService>();
+            // A nasty behaviour quirck where LightInject will return the same instance several times
+            if (value is IEnumerable<object> enumerable) return (TService) enumerable.Distinct(Comparer);
+            return value;
+        }
 
         public void Dispose() => _serviceContainer.Dispose();
     }
