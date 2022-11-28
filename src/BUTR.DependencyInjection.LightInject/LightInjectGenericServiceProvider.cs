@@ -50,6 +50,9 @@ namespace BUTR.DependencyInjection.LightInject
     using global::$rootnamespace$.LightInject;
 #endif
 
+    using global::System;
+    using global::System.Collections;
+    using global::System.Collections.Concurrent;
     using global::System.Collections.Generic;
     using global::System.Linq;
 
@@ -62,6 +65,9 @@ namespace BUTR.DependencyInjection.LightInject
         }
         private static readonly ReferenceEqualityComparer Comparer = new ReferenceEqualityComparer();
 
+        private delegate TService OfTypeDelegate<TService>(IEnumerable<object> enumerable);
+        private static readonly ConcurrentDictionary<Type, object> OfTypeCache = new ConcurrentDictionary<Type, object>();
+
         private readonly IServiceContainer _serviceContainer;
 
         public LightInjectGenericServiceProvider(IServiceContainer serviceContainer) => _serviceContainer = serviceContainer;
@@ -73,7 +79,13 @@ namespace BUTR.DependencyInjection.LightInject
         {
             var value = _serviceContainer.GetInstance<TService>();
             // A nasty behaviour quirck where LightInject will return the same instance several times
-            if (value is IEnumerable<object> enumerable) return (TService) enumerable.Distinct(Comparer);
+            var type = typeof(TService);
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEnumerable<>) && value is IEnumerable enumerable)
+            {
+                var ofType = (OfTypeDelegate<TService>) OfTypeCache.GetOrAdd(typeof(TService), x =>
+                    typeof(Enumerable).GetMethod("OfType").MakeGenericMethod(x.GenericTypeArguments[0]).CreateDelegate(typeof(OfTypeDelegate<TService>)));
+                return ofType(enumerable.Cast<object>().Distinct(Comparer));
+            }
             return value;
         }
 
