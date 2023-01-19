@@ -1,4 +1,4 @@
-<!--EXTERNAL_PROPERTIES: DefineConstants;TargetFramework-->
+﻿<!--EXTERNAL_PROPERTIES: DefineConstants;TargetFramework-->
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -14,9 +14,8 @@
 
   <ItemGroup>
     <PackageFile Include="**/*.cs"
-                 PackagePath="content\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs"
-                 Exclude="$(BaseIntermediateOutputPath)/**/*.cs" />
-    <PackageFile Include="../BUTR.DependencyInjection.props" PackagePath="build/BUTR.DependencyInjection.props" />
+                 PackagePath="contentFiles\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs"
+                 Exclude="$(BaseIntermediateOutputPath)/**/*.cs.pp" />
     <PackageFile Include="../../assets/Icon128x128.png" PackagePath="icon.png" />
   </ItemGroup>
 

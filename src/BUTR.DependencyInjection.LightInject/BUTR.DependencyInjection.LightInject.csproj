@@ -14,9 +14,8 @@
 
   <ItemGroup>
     <PackageFile Include="**/*.cs"
-                 PackagePath="content\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs"
-                 Exclude="$(BaseIntermediateOutputPath)/**/*.cs" />
-    <PackageFile Include="../BUTR.DependencyInjection.LightInject.props" PackagePath="build/BUTR.DependencyInjection.LightInject.props" />
+                 PackagePath="contentFiles\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs"
+                 Exclude="$(BaseIntermediateOutputPath)/**/*.cs.pp" />
     <PackageFile Include="../../assets/Icon128x128.png" PackagePath="icon.png" />
   </ItemGroup>
 

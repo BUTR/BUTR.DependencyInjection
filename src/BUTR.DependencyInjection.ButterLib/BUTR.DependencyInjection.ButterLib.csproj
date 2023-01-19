@@ -18,9 +18,8 @@
 
   <ItemGroup>
     <PackageFile Include="**/*.cs"
-                 PackagePath="content\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs"
-                 Exclude="$(BaseIntermediateOutputPath)/**/*.cs" />
-    <PackageFile Include="../BUTR.DependencyInjection.ButterLib.props" PackagePath="build/BUTR.DependencyInjection.ButterLib.props" />
+                 PackagePath="contentFiles\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs"
+                 Exclude="$(BaseIntermediateOutputPath)/**/*.cs.pp" />
     <PackageFile Include="../../assets/Icon128x128.png" PackagePath="icon.png" />
   </ItemGroup>
 
