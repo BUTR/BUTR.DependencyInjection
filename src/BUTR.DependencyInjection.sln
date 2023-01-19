@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33312.197
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BFAE8F5D-C97B-46F6-B4B3-EA9CF8DBB84F}"
+	ProjectSection(SolutionItems) = preProject
+		BUTR.DependencyInjection.ButterLib.props = BUTR.DependencyInjection.ButterLib.props
+		BUTR.DependencyInjection.LightInject.props = BUTR.DependencyInjection.LightInject.props
+		BUTR.DependencyInjection.props = BUTR.DependencyInjection.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{9131E015-3CCD-49D2-BDCD-E39C05BE348A}"
 	ProjectSection(SolutionItems) = preProject

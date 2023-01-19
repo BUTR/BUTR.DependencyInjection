@@ -1,4 +1,4 @@
-﻿<!--EXTERNAL_PROPERTIES: DefineConstants;TargetFramework-->
+<!--EXTERNAL_PROPERTIES: DefineConstants;TargetFramework-->
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -10,13 +10,13 @@
     <PackageProjectUrl>https://github.com/BUTR/BUTR.DependencyInjection</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/BUTR/BUTR.DependencyInjection/master/assets/Icon128x128.png</PackageIconUrl>
-    <EnablePackInference>false</EnablePackInference>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageFile Include="**/*.cs"
-                 PackagePath="contentFiles\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs.pp"
+                 PackagePath="content\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs"
                  Exclude="$(BaseIntermediateOutputPath)/**/*.cs" />
+    <PackageFile Include="../BUTR.DependencyInjection.props" PackagePath="build/BUTR.DependencyInjection.props" />
     <PackageFile Include="../../assets/Icon128x128.png" PackagePath="icon.png" />
   </ItemGroup>
 
