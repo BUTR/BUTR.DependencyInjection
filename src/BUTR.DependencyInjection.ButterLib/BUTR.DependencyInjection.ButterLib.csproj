@@ -18,8 +18,8 @@
 
   <ItemGroup>
     <PackageFile Include="**/*.cs"
-                 PackagePath="contentFiles\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs"
-                 Exclude="$(BaseIntermediateOutputPath)/**/*.cs.pp" />
+                 PackagePath="contentFiles\cs\$(TargetFramework)\$(ProjectName)\%(RelativeDir)%(Filename).cs.pp"
+                 Exclude="$(BaseIntermediateOutputPath)/**/*.cs" />
     <PackageFile Include="../../assets/Icon128x128.png" PackagePath="icon.png" />
   </ItemGroup>
 
