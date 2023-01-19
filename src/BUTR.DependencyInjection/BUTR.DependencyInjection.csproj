@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/BUTR/BUTR.DependencyInjection</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/BUTR/BUTR.DependencyInjection/master/assets/Icon128x128.png</PackageIconUrl>
+    <EnablePackInference>false</EnablePackInference>
   </PropertyGroup>
 
   <ItemGroup>
